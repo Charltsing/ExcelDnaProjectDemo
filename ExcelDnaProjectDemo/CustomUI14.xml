@@ -1,0 +1,38 @@
+<customUI xmlns='http://schemas.microsoft.com/office/2009/07/customui' loadImage='LoadImage'  onLoad='ribbonLoaded'>  
+  <!-- 在 [XML]中被定义为 空白(whitespace)字符：空格 (&#x0020;) Tab (&#x0009;) 回车 (&#x000D;) 换行 (&#x000A;)-->
+  <ribbon startFromScratch="false">
+    <tabs>
+      <tab id='CustomTab' label='MyDnaTab' insertAfterMso="TabHome">
+        <group id='MyGroup' label='MenuAndButton'>
+          <menu id="RootMenu" label="Multi-level menu" imageMso="ReviewCompareMenu" size="large">
+            <menu id="subMenu1" label="SubMenu1" getImage='Button_getImage' >
+              <menu id="subMenu1-1" label="SubMenu1-1" getImage='Button_getImage' >
+                <button id="Menu1-1-1" label="Up" imageMso="OutlineMoveUp" onAction='button_Click' tag='Up'/>
+                <button id="Menu1-1-2" label="GoTo" imageMso="GoTo" onAction='button_Click' tag='Goto'/>
+                <button id="Menu1-1-3" label="Down" imageMso="OutlineMoveDown" onAction='button_Click' tag='Down'/>
+              </menu>
+            </menu>
+            <menu id="subMenu2" label="SubMenu2" getImage='Button_getImage' >
+              <menu id="subMenu2-1" label="SubMenu2-1" getImage='Button_getImage' >
+                <button id="Menu2-1-1" label="Up" imageMso="OutlineMoveUp" onAction='button_Click' tag='Up'/>
+                <button id="Menu2-1-2" label="GoTo" imageMso="GoTo" onAction='button_Click' tag='Goto'/>
+                <button id="Menu2-1-3" label="Down" imageMso="OutlineMoveDown" onAction='button_Click' tag='Down'/>
+              </menu>
+            </menu>
+            <menuSeparator id="MySeparator" />
+            <button id="MenuButton" label="My Button" getImage='Button_getImage' onAction='button_Click' tag='button'/>
+          </menu>
+          <separator id="separator1" />
+          <!-- 使用RunTagMacro，可以调用vba中的函数,也可以调用XLL中的ExcelCommand -->
+          <button id='TestRunTag' label='Test Run Tag' image='office.png' size='normal' onAction='RunTagMacro' tag='CmdName' />
+          <separator id="separator2" />
+          <button id='TestButton' getImage='Button_getImage' getLabel='Button_getLabel' size='large' onAction='button_Click' screentip="This is the screentip of button3" supertip="This is the supertip of button3"/>
+        </group >
+        <group id='SampleGroup' label='CTP Control'>
+          <button id='ShowCTP' label='Show CTP' getImage='Button_getImage' size='large' onAction='OnShowCTP' />
+          <button id='DeleteCTP' label='Delete CTP' getImage='Button_getImage' size='large' onAction='OnDeleteCTP' />
+        </group >
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
